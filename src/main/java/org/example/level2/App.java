@@ -34,7 +34,6 @@ public class App {
             // 무한으로 계산을 진행할 수 있도록 소스 코드를 수정하기
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             scanner.nextLine();
-
         } while(!scanner.nextLine().equals("exit"));
     }
 }

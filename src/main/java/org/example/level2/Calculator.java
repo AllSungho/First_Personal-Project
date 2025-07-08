@@ -6,7 +6,7 @@ public class Calculator {
     // App 클래스의 main 메서드에서 Calculator 클래스의 연산 결과를 저장하고 있는
     // 컬렉션 필드에 직접 접근하지 못하도록 수정 (캡슐화)
     private int result;
-    private Queue queue = new LinkedList();
+    private Queue queue = new ArrayDeque();
 
     // 사칙연산을 수행 후, 결과값 반환 메서드 구현 & 연산 결과를 저장하는 컬렉션 타입 필드를 가진 Calculator 클래스를 생성
     public int calculator(int firstValue, int secondValue, char ch) {
