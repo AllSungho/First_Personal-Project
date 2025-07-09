@@ -1,9 +1,11 @@
 package org.example.level3;
+import java.sql.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator <S> {
-    public S calculator(S firstValue, S secondValue, OperatorType operatorType) {
-        S result = null;
+    public String calculator(S firstValue, S secondValue, OperatorType operatorType) {
+        String result = null;
         String firstValueString = firstValue.toString();
         String secondValueString = secondValue.toString();
         int firstValueLength = firstValueString.length();
@@ -34,7 +36,7 @@ public class ArithmeticCalculator <S> {
             default:
                 System.out.println("연잔자를 잘못 입력하셨습니다.");
         }
-        
+        result = resultDouble.toString();
 
         return result;
     }
@@ -57,4 +59,8 @@ public class ArithmeticCalculator <S> {
         return true;
     }
 
+    public List moreBiggerResult(List<String> list, Double resultDouble){
+        List<String> copy = new ArrayList<>(list.stream().map(num -> num.toString()).collect(Collectors.toList()));
+        return copy.stream().map(num -> Double.parseDouble(num) < resultDouble ).collect(Collectors.toList());
+    }
 }

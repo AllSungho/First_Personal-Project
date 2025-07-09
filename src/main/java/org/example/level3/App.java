@@ -2,13 +2,14 @@ package org.example.level3;
 
 import org.example.level2.Calculator;
 
-import java.util.Objects;
+import java.util.*;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String result = null;
+        String result = "";
+        List<String> list = new ArrayList<>();
 
         OperatorType operatorType = null;
 
@@ -44,17 +45,20 @@ public class App {
             }
             // 피연산자의 타입에 따라 전달되는 인수가 달라짐
             ArithmeticCalculator<String> cal = new ArithmeticCalculator<>();
-
-            // firstValue와 secondValue가 String 타입일 시 해결 방법을 생각해야 함
-
+            
+            // 결과값 계산
             result = cal.calculator(firstValue, secondValue, operatorType);
 
             if(result == null) {
                 continue;
             }
-            // Lv 1에서 구현한 App 클래스의 main 메서드에 Calculator 클래스가 활용될 수 있도록 수정
-            System.out.println("결과: " + result);
+            else{
+                // Lv 1에서 구현한 App 클래스의 main 메서드에 Calculator 클래스가 활용될 수 있도록 수정
+                System.out.println("결과: " + result);
+            }
 
+            // 리스트에 추가
+            list.add(result);
 
 
             // 반복문을 사용하되, 반복의 종료를 알려주는 “exit” 문자열을 입력하기 전까지
