@@ -14,12 +14,16 @@ public class App {
         OperatorType operatorType = null;
 
         do {
+            System.out.println("::::::::::::::::::::::::::");
+            System.out.print("");
             // 양의 정수(0 포함)를 입력받기
             System.out.print("첫 번째 값 입력: ");
             String firstValue = scanner.nextLine();
+            System.out.println("::::::::::::::::::::::::::");
             System.out.print("두 번째 값 입력: ");
             String secondValue = scanner.nextLine();
 
+            System.out.println("::::::::::::::::::::::::::");
             // 사칙연산 기호(➕,➖,✖️,➗)를 입력받기
             System.out.print("사칙연산 입력: ");
             char ch = scanner.next().charAt(0);
@@ -45,7 +49,7 @@ public class App {
             }
             // 피연산자의 타입에 따라 전달되는 인수가 달라짐
             ArithmeticCalculator<String> cal = new ArithmeticCalculator<>();
-            
+
             // 결과값 계산
             result = cal.calculator(firstValue, secondValue, operatorType);
 
@@ -53,18 +57,22 @@ public class App {
                 continue;
             }
             else{
+                System.out.println("::::::::::::::::::::::::::");
                 // Lv 1에서 구현한 App 클래스의 main 메서드에 Calculator 클래스가 활용될 수 있도록 수정
                 System.out.println("결과: " + result);
             }
 
+            System.out.println(":::::::큰 결과값들 출력:::::::");
+            // 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과값 들을 출력
+            System.out.println(cal.moreBiggerResult(list, result));
+            System.out.println("::::::::::::::::::::::::::");
             // 리스트에 추가
             list.add(result);
-
-
             // 반복문을 사용하되, 반복의 종료를 알려주는 “exit” 문자열을 입력하기 전까지
             // 무한으로 계산을 진행할 수 있도록 소스 코드를 수정하기
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             scanner.nextLine();
+
         } while(!scanner.nextLine().equals("exit"));
     }
 }

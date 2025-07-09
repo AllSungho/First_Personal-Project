@@ -20,17 +20,21 @@ public class ArithmeticCalculator <S> {
 
         switch(operatorType){
             case SUM:
+                System.out.println("덧셈: " + firstValueDouble + " + " + secondValueDouble);
                 resultDouble = firstValueDouble + secondValueDouble;
                 break;
             case SUB:
+                System.out.println("뺄셈: " + firstValueDouble + " - " + secondValueDouble);
                 resultDouble = firstValueDouble - secondValueDouble;
                 break;
             case MUL:
+                System.out.println("곱셈: " + firstValueDouble + " x " + secondValueDouble);
                 resultDouble = firstValueDouble * secondValueDouble;
                 break;
             case DIV:
                 if(secondValueDouble == 0)
                     return null;
+                System.out.println("나눗셈: " + firstValueDouble + " ÷ " + secondValueDouble);
                 resultDouble = firstValueDouble / secondValueDouble;
                 break;
             default:
@@ -43,6 +47,7 @@ public class ArithmeticCalculator <S> {
 
     public Boolean isNumber(int length, String string){
         int dat = 0;
+        // .. 입력 시 오류 발생
         // 첫 번째 문자열을 받아 단순 문자열이거나 잘못된 숫자 일 시 혼내주기
         for(int i=0;i<length;i++){
             // 해당 인덱스의 문자가 숫자가 아니라면
@@ -59,8 +64,9 @@ public class ArithmeticCalculator <S> {
         return true;
     }
 
-    public List moreBiggerResult(List<String> list, Double resultDouble){
+    public List moreBiggerResult(List<String> list, String currentResult){
         List<String> copy = new ArrayList<>(list.stream().map(num -> num.toString()).collect(Collectors.toList()));
-        return copy.stream().map(num -> Double.parseDouble(num) < resultDouble ).collect(Collectors.toList());
+        // 리턴이 리스트 내에 Boolean 형식으로 나옴
+        return copy.stream().filter(num -> Double.parseDouble(num) > Double.parseDouble(currentResult)).map(num -> num).collect(Collectors.toList());
     }
 }
