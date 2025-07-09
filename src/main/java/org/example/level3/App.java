@@ -8,21 +8,23 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArithmeticCalculator cal = new ArithmeticCalculator();
-        Objects result = null;
+        String result = null;
+
         OperatorType operatorType = null;
 
         do {
             // 양의 정수(0 포함)를 입력받기
             System.out.print("첫 번째 값 입력: ");
-            Object firstValue = scanner.nextInt();
+            String firstValue = scanner.nextLine();
             System.out.print("두 번째 값 입력: ");
-            Object secondValue = scanner.nextInt();
+            String secondValue = scanner.nextLine();
 
             // 사칙연산 기호(➕,➖,✖️,➗)를 입력받기
             System.out.print("사칙연산 입력: ");
             char ch = scanner.next().charAt(0);
 
+            // num 타입을 활용하여 연산자 타입에 대한 정보를 관리하고
+            // 이를 사칙연산 계산기 ArithmeticCalculator 클래스에 활용 해봅니다
             switch(ch){
                 case '+':
                     operatorType = OperatorType.SUM;
@@ -40,12 +42,19 @@ public class App {
                     System.out.println("연산자를 잘못 입력하셨습니다.");
                     continue;
             }
+            // 피연산자의 타입에 따라 전달되는 인수가 달라짐
+            ArithmeticCalculator<String> cal = new ArithmeticCalculator<>();
 
             // firstValue와 secondValue가 String 타입일 시 해결 방법을 생각해야 함
-            
 
+            result = cal.calculator(firstValue, secondValue, operatorType);
+
+            if(result == null) {
+                continue;
+            }
             // Lv 1에서 구현한 App 클래스의 main 메서드에 Calculator 클래스가 활용될 수 있도록 수정
-            System.out.println("결과: " + cal.calculator(firstValue, secondValue, operatorType));
+            System.out.println("결과: " + result);
+
 
 
             // 반복문을 사용하되, 반복의 종료를 알려주는 “exit” 문자열을 입력하기 전까지
