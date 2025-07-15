@@ -23,7 +23,7 @@ public class App {
             System.out.println("결과: " + cal.calculator(firstValue, secondValue, ch));
 
             // App 클래스의 main 메서드에 삭제 메서드가 활용될 수 있도록 수정
-            System.out.println("가장 오랫동안 저장된 데이터를 삭제하겠습니까?");
+            System.out.println("가장 오랫동안 저장된 데이터를 삭제하겠습니까?(y/n)");
             ch = scanner.next().charAt(0);
             if(ch=='y'){
                 cal.removeResult();

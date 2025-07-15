@@ -5,16 +5,20 @@ import java.util.stream.Collectors;
 
 public class ArithmeticCalculator <S> {
     public String calculator(S firstValue, S secondValue, OperatorType operatorType) {
-        String result = null;
+        // 제네릭 타입 입력값을 문자열로 변환
         String firstValueString = firstValue.toString();
         String secondValueString = secondValue.toString();
+
         int firstValueLength = firstValueString.length();
         int secondValueLength = secondValueString.length();
+
         Double resultDouble = null;
 
+        // 입력 받은 문자열에서 정수 또는 실수가 아닌 문자열일 시 null 반환
         if(!isNumber(firstValueLength, firstValueString) || !isNumber(secondValueLength, secondValueString))
             return null;
 
+        // 문자열을 실수형으로 변환
         Double firstValueDouble = Double.parseDouble(firstValueString);
         Double secondValueDouble = Double.parseDouble(secondValueString);
 
@@ -40,9 +44,8 @@ public class ArithmeticCalculator <S> {
             default:
                 System.out.println("연잔자를 잘못 입력하셨습니다.");
         }
-        result = resultDouble.toString();
 
-        return result;
+        return resultDouble.toString();
     }
 
     public Boolean isNumber(int length, String string){

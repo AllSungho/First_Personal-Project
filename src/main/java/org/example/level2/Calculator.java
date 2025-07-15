@@ -33,8 +33,9 @@ public class Calculator {
                 return 0;
         }
         queue.add(result);
-
+        System.out.println("::::: 컬렉션 내부 :::::");
         System.out.println(queue);
+        System.out.println("::::::::::::::::::::");
 
         return result;
     }
