@@ -1,7 +1,5 @@
 package org.example.homework;
 
-import org.example.Calculator2;
-
 import java.util.List;
 import java.util.Scanner;
 
